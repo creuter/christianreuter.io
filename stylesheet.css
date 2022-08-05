@@ -3,6 +3,7 @@
 @font-face {
   font-family: "Newsreader";
   src: url("fonts/newsreader/Newsreader[opsz,wght].ttf") format("truetype-variations");
+  font-display: swap;
 }
 
 /* Reset ------------------------------------------------------------------- */
