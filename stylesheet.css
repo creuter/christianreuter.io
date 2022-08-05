@@ -1,7 +1,8 @@
 /* Fonts ------------------------------------------------------------------- */
+
 @font-face {
   font-family: "Newsreader";
-  src: url("fonts/newsreader/Newsreader-VariableFont_opsz,wght.ttf") format("truetype-variations");
+  src: url("fonts/newsreader/Newsreader[opsz,wght].ttf") format("truetype-variations");
 }
 
 /* Reset ------------------------------------------------------------------- */
@@ -30,12 +31,11 @@ time, mark, audio, video {
 /* Variables  ------------------------------------------------------------------ */
 
 :root {
-  --font-family: "Newsreader",Georgia,"Times New Roman",Times,serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-family: "Newsreader", Times, serif;
   --color-background: #354550;
   --color-text: #e4e2d8;
   --color-subdued-text: #afb3af;
 }
-
 
 /* Layout  ------------------------------------------------------------------ */
 
@@ -54,11 +54,13 @@ body {
   font-size: 1.125em;
   font-smoothing: antialiased;
   padding: 1.5em 1em 3em;
+  font-variation-settings: "wght" 400, "opsz" 18;
 }
 
 @media (min-width: 36em) {
   body {
     font-size: 1.5em;
+    font-variation-settings: "wght" 400, "opsz" 24;
   }
 }
 
@@ -79,6 +81,7 @@ li {
 }
 
 /* Intro  ------------------------------------------------------------------ */
+
 img {
   border-radius: 50%;
   height: 8em;
