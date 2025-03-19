@@ -54,7 +54,7 @@ body {
   font-feature-settings: "kern" 1,"liga" 1,"onum" 1;
   font-size: 1.125em;
   font-smoothing: antialiased;
-  padding: 1.5em 1em 3em;
+  padding: 1.5em 1em 6em;
   font-variation-settings: "wght" 400, "opsz" 18;
 }
 
@@ -104,6 +104,7 @@ h1 + p {
 p {
   line-height: 1.5;
   margin-bottom: 1em;
+  hanging-punctuation: first;
 }
 
 a {
@@ -113,4 +114,52 @@ a {
 
 a:hover {
   color: var(--color-subdued-text);
+}
+
+/* Feedback ------------------------------------------------------------------ */
+.quote {
+  margin-bottom: 3em;
+}
+
+blockquote {
+  display: block;
+  /* quotes: auto; */
+  line-height: 1.5;
+  margin-bottom: 1em;
+  hanging-punctuation: first;
+  text-indent: -0.7ch;
+}
+
+/* blockquote::before { */
+  /* content: &ldquo; */
+  /* content: "\0x22"; */
+  /* content: open-quote; */
+  /* display: inline; */
+  /* display: inline-block; */
+/*   /* display: block; */
+/* } */
+
+
+
+/* blockquote::after { */
+/*   content: close-quote; */
+/* } */
+
+.large-title {
+  font-size: 1.5em;
+  margin-bottom: 2em;
+}
+
+footer {
+  font-size: 0.825em;
+  font-style: italic;
+  color: var(--color-subdued-text);
+}
+
+.social {
+  display: flex;
+  list-style: none;
+  margin-top: 3em;
+  margin-left: 0;
+  /* margin-left: auto; */
 }
