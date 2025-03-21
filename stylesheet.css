@@ -177,14 +177,14 @@ footer {
 
 .social {
   display: flex;
-  gap: 2em;
+  gap: 1.5em;
   margin-top: 6em;
 }
 
-h1 {
-  font-size: 1.25em;
-  font-variation-settings: "wght" 600, "opsz" 30;
-}
+/* h1 { */
+/*   font-size: 1.25em; */
+/*   font-variation-settings: "wght" 600, "opsz" 30; */
+/* } */
 
 /* Work ---------------------------------------------------------------------- */
 
@@ -196,24 +196,34 @@ h1 {
 }
 
 .project {
-  margin-bottom: 4em;
 }
 
 .project-image-wrapper {
   border-radius: 8px;
   height: min-content;
-  margin-left: -6vw;
-  margin-right: -6vw;
+  /* margin-right: 04em; */
   max-height: 52vh;
   overflow: hidden;
-  padding-left: 6vw;
-  padding-right: 6vw;
-  padding-top: 6vw;
+  /* padding-right: 6vw; */
+    margin: 0 -1em 1em -1em;
+    padding-left: 1em;
+    padding-top: 1em;
+}
+
+@media (min-width: 48em) {
+  .project-image-wrapper {
+    margin: 0 -4em 4em -4em;
+    padding-top: 4em;
+    /* background: red !important; */
+  }
 }
 
 .project-image-wrapper img {
   border-radius: 6px;
-  max-width: 100%;
+  /* max-width: 100%; */
+  margin: 0 auto;
+  display: block;
+  max-width: calc(100vw - 8em);
 }
 
 .project a {
