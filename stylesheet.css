@@ -36,6 +36,11 @@ time, mark, audio, video {
   --color-background: #354550;
   --color-text: #e4e2d8;
   --color-subdued-text: #afb3af;
+  --color-sage: #a8b5a2;
+  --color-mauve: #b8a1a5;
+  --color-sand: #cac2b5;
+  --color-terracotta: #cac2b5;
+  --color-complement-5: #c79a8d;
 }
 
 /* Layout  ------------------------------------------------------------------ */
@@ -68,18 +73,43 @@ body {
 header {
   align-items: center;
   display: flex;
+  justify-content: space-between;
   margin-bottom: 6em;
 }
 
 ul {
   display: flex;
+  gap: 1.5em;
   list-style: none;
   margin-left: auto;
 }
 
-li {
-  margin-left: 1.5em;
+nav a {
+  color: var(--color-subdued-text);
+  text-decoration: none;
 }
+
+nav a.active {
+  color: var(--color-text);
+  position: relative;
+}
+
+nav a:hover {
+  color: var(--color-text);
+}
+
+nav a.active::after {
+  bottom: -0.25em;
+  background-color: var(--color-mauve);
+  content: "";
+  display: block;
+  height: 3px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  border-radius: 3px;
+}
+
 
 /* Intro  ------------------------------------------------------------------ */
 
@@ -123,43 +153,25 @@ a:hover {
 
 blockquote {
   display: block;
-  /* quotes: auto; */
+  hanging-punctuation: first;
   line-height: 1.5;
   margin-bottom: 1em;
-  hanging-punctuation: first;
   text-indent: -0.7ch;
 }
 
-/* blockquote::before { */
-  /* content: &ldquo; */
-  /* content: "\0x22"; */
-  /* content: open-quote; */
-  /* display: inline; */
-  /* display: inline-block; */
-/*   /* display: block; */
-/* } */
-
-
-
-/* blockquote::after { */
-/*   content: close-quote; */
-/* } */
-
-.large-title {
-  font-size: 1.5em;
-  margin-bottom: 2em;
-}
-
 footer {
+  color: var(--color-subdued-text);
   font-size: 0.825em;
   font-style: italic;
-  color: var(--color-subdued-text);
 }
 
 .social {
   display: flex;
-  list-style: none;
-  margin-top: 3em;
-  margin-left: 0;
-  /* margin-left: auto; */
+  gap: 2em;
+  margin-top: 6em;
+}
+
+h1 {
+  font-size: 1.25em;
+  font-variation-settings: "wght" 600, "opsz" 30;
 }
