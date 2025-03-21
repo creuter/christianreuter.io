@@ -6,6 +6,12 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Newsreader Italic";
+  src: url("fonts/newsreader/Newsreader-Italic[opsz,wght].ttf") format("truetype-variations");
+  font-display: swap;
+}
+
 /* Reset ------------------------------------------------------------------- */
 
 html, body, div, span, applet, object, iframe,
@@ -33,14 +39,14 @@ time, mark, audio, video {
 
 :root {
   --font-family: "Newsreader", Times, serif;
+  --font-family-italic: "Newsreader Italic", Times, serif;
   --color-background: #354550;
   --color-text: #e4e2d8;
   --color-subdued-text: #afb3af;
   --color-sage: #a8b5a2;
   --color-mauve: #b8a1a5;
   --color-sand: #cac2b5;
-  --color-terracotta: #cac2b5;
-  --color-complement-5: #c79a8d;
+  --color-terracotta: #c79a8d;
 }
 
 /* Layout  ------------------------------------------------------------------ */
@@ -66,7 +72,7 @@ body {
 @media (min-width: 36em) {
   body {
     font-size: 1.5em;
-    font-variation-settings: "wght" 400, "opsz" 24;
+    font-variation-settings: "opsz" 24;
   }
 }
 
@@ -75,6 +81,11 @@ header {
   display: flex;
   justify-content: space-between;
   margin-bottom: 6em;
+}
+
+.name {
+  font-family: var(--font-family-italic);
+  text-decoration: none;
 }
 
 ul {
@@ -99,21 +110,20 @@ nav a:hover {
 }
 
 nav a.active::after {
-  bottom: -0.25em;
   background-color: var(--color-mauve);
+  border-radius: 3px;
+  bottom: -0.25em;
   content: "";
   display: block;
   height: 3px;
   left: 0;
   position: absolute;
   right: 0;
-  border-radius: 3px;
 }
-
 
 /* Intro  ------------------------------------------------------------------ */
 
-img {
+.profile-picture {
   border-radius: 50%;
   height: 8em;
   margin-bottom: 2em;
@@ -162,7 +172,7 @@ blockquote {
 footer {
   color: var(--color-subdued-text);
   font-size: 0.825em;
-  font-style: italic;
+  font-family: var(--font-family-italic);
 }
 
 .social {
@@ -174,4 +184,54 @@ footer {
 h1 {
   font-size: 1.25em;
   font-variation-settings: "wght" 600, "opsz" 30;
+}
+
+/* Work ---------------------------------------------------------------------- */
+
+.work-date {
+  color: var(--color-subdued-text);
+  font-size: 0.825em;
+  font-family: var(--font-family-italic);
+  margin-bottom: 1em;
+}
+
+.project {
+  margin-bottom: 4em;
+}
+
+.project-image-wrapper {
+  border-radius: 8px;
+  height: min-content;
+  margin-left: -6vw;
+  margin-right: -6vw;
+  max-height: 52vh;
+  overflow: hidden;
+  padding-left: 6vw;
+  padding-right: 6vw;
+  padding-top: 6vw;
+}
+
+.project-image-wrapper img {
+  border-radius: 6px;
+  max-width: 100%;
+}
+
+.project a {
+  text-decoration: none;
+}
+
+.project a:hover {
+  color: inherit;
+}
+.sage {
+  background-color: var(--color-sage);
+}
+.mauve {
+  background-color: var(--color-mauve);
+}
+.sand {
+  background-color: var(--color-sand);
+}
+.terracotta {
+  background-color: var(--color-terracotta);
 }
