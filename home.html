@@ -1,79 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Christian Reuter is a product design
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Christian Reuter is a product design
     leader in Raleigh, North Carolina.">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Christian Reuter</title>
-    <link rel="stylesheet" href="stylesheet.css" type="text/css">
-    <link rel="mask-icon" href="website_icon.svg" color="#38454f">
-    <link rel="icon" href="favicon-32.png" sizes="32x32">
-  </head>
-  <body>
-    <div class="container">
-      <header>
-        <span class="name">Christian Reuter</span>
-        <nav>
-          <ul>
-            <li>
-              <a href="home.html" class="active">About</a>
-            </li>
-            <li>
-              <a href="work.html">Work</a>
-            </li>
-            <li>
-              <a href="feedback.html">Feedback</a>
-            </li>
-          </ul>
-        </nav>
-      </header>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#354550">
+  <title>Christian Reuter</title>
+  <link rel="stylesheet" href="stylesheet.css" type="text/css">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="mask-icon" href="favicon.svg" color="#354550">
+</head>
 
-      <img src="images/christian-reuter.jpg" alt="Christian's headshot"
-                class="profile-picture">
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-      <h1 class="large-title">Hello, I’m Christian!</h1>
+  <div class="container">
+    <header>
+      <span class="header-name">Christian Reuter</span>
+    </header>
+
+    <main id="main-content">
+      <img src="images/christian-reuter.jpg" alt="Christian Reuter's professional headshot" class="profile-picture">
+
+      <h1 class="large-title">Hello, I'm Christian!</h1>
       <p>
-        I’m a digital product designer living in Raleigh, NC with my wife, two
-        boys, and dog. I’ve designed interfaces for the past ~15 years.
+        I'm a product design &amp; UX research leader in Raleigh, NC who drives
+        clarity, craft, and culture at the heart of high-growth, intelligent
+        platforms.
       </p>
-      <p>
-        I’m currently working remotely as the head of design at
-        <a href="https://iterable.com">Iterable</a>, a
-        marketing automation platform, where we help brands better communicate
-        with their customers. It’s an exciting space, with all sorts of
-        interesting challenges around AI, big data, and tools for creation. I
-        love getting to work with technology that's human-centered, makes
-        people’s jobs easier, and amplifies their creative potential.
-      </p>
-      <p>
-        Before Iterable, I was the design director at
-        <a href="https://thoughtbot.com">thoughtbot</a>’s
-        Raleigh studio, where we built custom web and mobile applications for
-        our clients around the Southeast.
-      </p>
-      <p>
-        I’m a “full-stack” generalist, interested in scaling quality, culture,
-        and innovation for high-functioning, distributed design teams.
-      </p>
-      <p>
-        Outside of work, I’m getting better at woodworking and flower gardening.
-        I play a lot of Sudoku, and love kayaking in the coastal Carolinas.
-      </p>
-      <p>
-        I always enjoy connecting with designers and other makers. <a
-          href="mailto:hello@christianreuter.io">Shoot me an email</a> if
-        you’re in the area, working on an interesting project, or have thoughts
-        on remote design work! I’d love to chat.
-      </p>
-      <ul class="social">
-        <li>
-          <a href="mailto:hello@christianreuter.io">Email</a>
-        </li>
-        <li>
-          <a href="https://linkedin.com/in/christian-reuter-b8ab371b3">LinkedIn</a>
-        </li>
-      </ul>
-    </div>
-  </body>
+
+      <!-- About -------------------------------------------------------------->
+      <section aria-labelledby="about-heading">
+        <h2 id="about-heading">About</h2>
+        <p>
+          I'm currently working remotely as the head of design at
+          <a href="https://iterable.com">Iterable</a>, a
+          marketing automation platform, where we help brands better communicate
+          with their customers. It's an exciting space, with all sorts of
+          interesting challenges around AI, big data, and tools for creation. I
+          love getting to work with technology that's human-centered, makes
+          people's jobs easier, and amplifies their creative potential.
+        </p>
+        <p>
+          At Iterable, I've scaled the design team, built our research
+          and design systems practices, led complex AI and modernization efforts,
+          and helped shape a multi-year product vision.
+        </p>
+        <p>
+          Prior to that, I was the design director at
+          <a href="https://thoughtbot.com">thoughtbot</a>'s
+          Raleigh studio, where we built custom web and mobile applications for
+          our clients around the Southeast.
+        </p>
+        <p>
+          I'm a full-stack generalist with a bias for clarity, momentum, and
+          thoughtful systems. I care deeply about craft, continuous learning, and
+          building cultures where people feel empowered to do their best
+          work—especially in distributed environments.
+        </p>
+      </section>
+
+      <!-- Contact -------------------------------------------------------------->
+      <section aria-labelledby="contact-heading">
+        <h2 id="contact-heading">Contact</h2>
+        <dl>
+          <dt>Email</dt>
+          <dd>
+            <a href="mailto:hello@christianreuter.io">hello@christianreuter.io</a>
+          </dd>
+          <dt>LinkedIn</dt>
+          <dd>
+            <a href="https://linkedin.com/in/christian-reuter-b8ab371b3">@christian-reuter-b8ab371b3</a>
+          </dd>
+        </dl>
+      </section>
+
+      <!-- Work ------------------------------------------------------------------->
+      <section aria-labelledby="work-heading">
+        <h2 id="work-heading">Work</h2>
+        <div class="work-grid" aria-label="Portfolio projects">
+          <a href="work/vision.html" class="index-project sage">
+            <h3 class="work-title">Shaping the Iterable Vision</h3>
+            <div class="index-project-wrapper">
+              <img src="images/vision/home-page-2x.png" alt="Screenshot of Iterable's redesigned home page interface">
+            </div>
+          </a>
+
+          <a href="work/ai.html" class="index-project mauve">
+            <h3 class="work-title">Designing for AI</h3>
+            <div class="index-project-wrapper">
+              <img src="images/ai/predictive-goals-2x.png"
+                alt="AI-powered predictive goals interface showing data visualization">
+            </div>
+          </a>
+
+          <a href="work/modernization.html" class="index-project sand">
+            <h3 class="work-title">Modernization</h3>
+            <div class="index-project-wrapper">
+              <img src="images/modernization/studio-new-2x.png"
+                alt="Modernized studio interface with improved user experience">
+            </div>
+          </a>
+
+          <a href="work/culture.html" class="index-project terracotta">
+            <h3 class="work-title">Building a culture of trust</h3>
+            <div class="index-project-wrapper">
+              <img src="images/culture/team-charter-2x.png"
+                alt="Team charter document showing collaborative design principles">
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- Feedback -------------------------------------------------------------->
+      <section aria-labelledby="testimonials-heading">
+        <h2 id="testimonials-heading">A few nice things colleagues have shared</h2>
+        <div class="quote">
+          <blockquote>
+            &ldquo;Christian is a seasoned leader who takes initiative before any is
+            requested. He has stepped into very ambiguous strategic conversations
+            with great confidence. Through his leadership and facilitation we are
+            able to come to critical clarity. I believe Christian is one of the
+            most thoughtful partners across the org when it comes to distilling
+            key components of strategic thought specific to our platform and in
+            collaboration across the org.&rdquo;
+          </blockquote>
+          <footer>&mdash; VP Product, 2024</footer>
+        </div>
+        <div class="quote">
+          <blockquote>
+            &ldquo;Christian helps me feel more confident and inspired to take
+            more risks in my work&rdquo;
+          </blockquote>
+          <footer>&mdash; Managing Director, 2018</footer>
+        </div>
+        <div class="quote">
+          <blockquote>
+            &ldquo;Over the past year, Christian has done a uniquely impressive
+            job steering Iterable toward the future. He led our new design system
+            creation, spearheaded scaling our user research approach, led new
+            product concepts design sprints, championed product design principles.
+            He keeps the team aligned, cuts through ambiguity, approaches
+            challenges with a smile and kindness for everyone around him. He's a
+            secret weapon, and we're lucky to have him.&rdquo;
+          </blockquote>
+          <footer>&mdash; SVP Product, 2021</footer>
+        </div>
+        <div class="quote">
+          <blockquote>
+            &ldquo;There are so many areas where I feel Christian truly excels in
+            his role, but the number one thing has to be his ability to empower
+            the people he manages. As director of product design, his ability to
+            empower the product design team is what has made all of the UI/UX
+            improvements possible and it's why we continue to see an influx of
+            customer compliments about our product's usability. His leadership and
+            genuine care for the people and products he oversees comes through in
+            every meeting and every decision he makes. Even through our current
+            turbulent times, where he's having to manage more than ever, he
+            continues to excel and pushes us all to be better each and every day.
+            Iterable is lucky to have Christian and I'm lucky I get to work with
+            and learn from him.&rdquo;
+          </blockquote>
+          <footer>&mdash; Senior Product Designer, 2025</footer>
+        </div>
+        <!-- <div class="quote"> -->
+        <!--   <blockquote> -->
+        <!--     &#38;ldquo;You're generally one of the most gracious leaders I know, -->
+        <!--     man&#45;&#45;always marvel at how inclusive you are.&#38;rdquo; -->
+        <!--   </blockquote> -->
+        <!--   <footer>&#38;mdash; Principal Technical Writer, 2022</footer> -->
+        <!-- </div> -->
+        <div class="quote">
+          <blockquote>
+            &ldquo;You are the most thoughtful and talented design leader I've
+            worked with yet—truly a design role model. Your ability to care deeply
+            about both the work and the people behind it is something I'll carry
+            forward. I'll be leaving with so many lessons from you—about craft,
+            leadership, and the impact of design at an organizational level.&rdquo;
+          </blockquote>
+          <footer>&mdash; Principal Product Designer, 2025</footer>
+        </div>
+        <!-- <div class="quote"> -->
+        <!--   <blockquote> -->
+        <!--     &#38;ldquo;A strong leader; advocates for the design team; has a wealth -->
+        <!--     of contextual knowledge of the Iterable product &#38;amp; understands it -->
+        <!--     deeply; makes product decisions that consider the user; provides -->
+        <!--     valuable feedback on all projects.&#38;rdquo; -->
+        <!--   </blockquote> -->
+        <!--   <footer>&#38;mdash; Principal UX Researcher, 2023</footer> -->
+        <!-- </div> -->
+        <div class="quote">
+          <blockquote>
+            &ldquo;Christian, your ability to lead, critique, design, and produce
+            is incredibly impressive. There is no doubt that you're at least 50%
+            of the success of the office.&rdquo;
+          </blockquote>
+          <footer>&mdash; Senior Software Engineer, 2018</footer>
+        </div>
+        <!-- <div class="quote"> -->
+        <!--   <blockquote> -->
+        <!--     &#38;ldquo;Christian stands out as an exemplary design manager, whose -->
+        <!--     mentorship, visionary leadership, and attention to detail -->
+        <!--     significantly enhance the design team's performance and cohesion. I -->
+        <!--     admire his ability to nurture individual and team growth while guiding -->
+        <!--     us towards achieving our career goals. He has personally coached me in -->
+        <!--     developing my craft leadership skills by focusing my work in areas -->
+        <!--     that will help me grow as a senior designer.&#38;rdquo; -->
+        <!--   </blockquote> -->
+        <!--   <footer>&#38;mdash; Senior Product Designer, 2023</footer> -->
+        <!-- </div> -->
+        <div class="quote">
+          <blockquote>
+            &ldquo;Christian's superpower is his ability to genuinely listen to
+            ideas coming from other folks, and give them a fair shake-even if they
+            don't work out, or if he doesn't agree.
+            He's so good at making people feel seen and heard-not because it's
+            some kind of trick he's good at, but because he's genuinely interested
+            and curious in ideas that aren't his own.&rdquo;
+          </blockquote>
+          <footer>&mdash; Principal Technical Writer, 2023</footer>
+        </div>
+        <!-- <div class="quote"> -->
+        <!--   <blockquote> -->
+        <!--     &#38;ldquo;...Christian seems to do a good job making incremental progress on -->
+        <!--     projects without getting too overwhelmed. I wish I could quantify this -->
+        <!--     with an example, but I'm having a hard time &#45; it's just been my -->
+        <!--     observation that he seems to really focus on making progress, in the -->
+        <!--     time available, on the things he can, in a low&#45;anxiety way. And this -->
+        <!--     actually probably makes him more productive.&#38;rdquo; -->
+        <!--   </blockquote> -->
+        <!--   <footer>&#38;mdash; Senior Product Designer, 2023</footer> -->
+        <!-- </div> -->
+      </section>
+    </main>
+  </div>
+</body>
+
 </html>

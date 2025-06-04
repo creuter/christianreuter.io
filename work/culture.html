@@ -1,0 +1,144 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Christian Reuter is a product design
+                leader in Raleigh, North Carolina.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#354550">
+  <!-- <meta name="theme&#45;color" content="#ffffff" media="(prefers&#45;color&#45;scheme: -->
+  <!-- light)"> -->
+  <!-- <meta name="theme&#45;color" content="#000000" media="(prefers&#45;color&#45;scheme: -->
+  <!-- dark)"> -->
+  <title>Christian Reuter</title>
+  <link rel="stylesheet" href="../stylesheet.css" type="text/css">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="mask-icon" href="../favicon.svg" color="#354550">
+</head>
+
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="container">
+    <header>
+      <span class="header-name">
+        <a href="../home.html">
+          Christian Reuter
+        </a>
+      </span>
+    </header>
+
+    <main id="main-content">
+      <article class="project">
+        <hgroup class="inner-container project-hgroup">
+          <h1 class="project-title">Building a culture of trust</h1>
+          <p class="work-subtitle">
+            Fostering psychological safety, cross-functional dependability, and
+            customer-centered empathy to enable great work.
+          </p>
+        </hgroup>
+
+        <figure class="terracotta">
+          <img class="project-image" src="../images/culture/team-charter-2x.png"
+            alt="Screenshot of team charter document showing collaborative principles">
+        </figure>
+        <div class="inner-container">
+          <p>
+            Great design happens when people feel safe to take risks, push
+            boundaries, and grow together. At Iterable, I cultivated a culture
+            rooted in trust and collaboration, enabling our team to thrive in a
+            fast-paced, distributed environment.
+          </p>
+          <p>
+            Our Product Design Team Charter reflects these shared principles:
+            communicate candidly, support each other, and raise the bar for
+            quality, all while staying kind and inclusive. This culture helped us
+            achieve a <strong>team engagement score of 100%</strong>, 21
+            percentage points above the company average.
+          </p>
+        </div>
+
+        <figure class="terracotta">
+          <img class="project-image" src="../images/culture/camps-2x.png"
+            alt="Screenshot of team collaboration activities and workshops">
+        </figure>
+        <div class="inner-container">
+          <p>
+            Trust and excellence go hand in hand. I worked across product,
+            engineering, and customer teams to ensure design was seen as a
+            dependable, non-blocking partner. By facilitating collaboration and
+            creating clarity, I helped the team consistently deliver with precision
+            and creativity. Our focus on Clarity, Autonomy, Meaning, Progress, and
+            Social Inclusion ensured the team felt supported and energized, even
+            while holding ourselves to best-in-class standards.
+          </p>
+        </div>
+
+        <div class="team-gallery terracotta">
+          <div class="team-mosaic">
+            <img class="team-photo" src="../images/culture/team-1.png" alt="Team member portrait 1">
+            <img class="team-photo" src="../images/culture/team-2.png" alt="Team member portrait 2">
+            <img class="team-photo" src="../images/culture/team-3.png" alt="Team member portrait 3">
+            <img class="team-photo" src="../images/culture/team-4.png" alt="Team member portrait 4">
+            <img class="team-photo" src="../images/culture/team-5.jpeg" alt="Team member portrait 5">
+          </div>
+        </div>
+        <div class="inner-container">
+          <p>
+            This culture of trust shaped not just how we worked with each other
+            but also how we designed for our users. We led with empathy, deeply
+            understanding customer needs and challenges, while upholding a strong
+            sense of accountability to ship thoughtful, high-quality experiences.
+            Internally and externally, trust has been the cornerstone of raising
+            the bar for what design can achieve.
+          </p>
+        </div>
+      </article>
+
+      <nav class="project-nav inner-container">
+        <a href="modernization.html">
+          <span class="project-nav-label">Previous</span>
+          <span class="project-nav-title">Modernizing Iterable's UX</span>
+        </a>
+        <a href="../home.html">
+          <span class="project-nav-label">Next</span>
+          <span class="project-nav-title">Back to Home</span>
+        </a>
+      </nav>
+    </main>
+  </div>
+  <div class="modal" id="imageModal">
+    <button class="modal-close" aria-label="Close modal">&times;</button>
+    <img class="modal-content" id="modalImage">
+  </div>
+  <script>
+    // Get modal elements
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeBtn = document.querySelector('.modal-close');
+
+    // Add click handlers to all article figures
+    document.querySelectorAll('article.project figure img').forEach(img => {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', () => {
+        modal.style.display = 'flex';
+        modalImg.src = img.src;
+      });
+    });
+
+    // Close modal when clicking close button or outside the image
+    closeBtn.addEventListener('click', () => modal.style.display = 'none');
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.style.display = 'none';
+    });
+
+    // Close modal on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') modal.style.display = 'none';
+    });
+
+
+  </script>
+</body>
+
+</html>
