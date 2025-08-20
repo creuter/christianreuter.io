@@ -1,9 +1,9 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
-  <meta name="description" content="Christian Reuter is a product design
-                leader in Raleigh, North Carolina.">
+  <meta name="description" content="Christian Reuter is a product design leader in Raleigh, North Carolina.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#354550">
   <title>Christian Reuter</title>
@@ -13,13 +13,10 @@
 </head>
 
 <body>
-
   <div class="container">
-    <header>
+    <header class="inner-container">
       <span class="header-name">
-        <a href="../home.html">
-          Christian Reuter
-        </a>
+        <a href="../home.html">Christian Reuter</a>
       </span>
     </header>
 
@@ -27,14 +24,15 @@
       <article class="project">
         <hgroup class="inner-container project-hgroup">
           <h1 class="project-title">Designing for AI</h1>
-          <p class="work-subtitle">Making intelligence feel intuitive,
-            trustworthy, and deeply useful in real-world marketing workflows.</p>
+          <p class="work-subtitle">Making intelligence feel intuitive, trustworthy, and deeply useful in real-world
+            marketing workflows.</p>
         </hgroup>
 
-        <figure class="mauve">
+        <figure class="coral">
           <img class="project-image" src="../images/ai/predictive-goals-2x.png"
-            alt="Screenshot of Iterable's Predictive Goals feature showing AI-powered conversion predictions">
+            alt="Screenshot of Iterable&rsquo;s Predictive Goals feature showing AI-powered conversion predictions">
         </figure>
+
         <div class="inner-container">
           <p>
             <strong>Predictive AI:</strong>
@@ -59,17 +57,18 @@
           </p>
 
           <p>
-            The feature has since evolved under my team's guidance, and is now
-            core to how many of our customers plan their campaigns. It's become
+            The feature has since evolved under my team&rsquo;s guidance, and is now
+            core to how many of our customers plan their campaigns. It&rsquo;s become
             the foundation for how we bring predictive modeling into the hands
             of everyday marketers.
           </p>
         </div>
 
-        <figure class="mauve">
+        <figure class="coral">
           <img class="project-image--stacked" src="../images/ai/nba-2x.png"
-            alt="Screenshot of Iterable's Next Best Action feature showing AI recommendations">
+            alt="Screenshot of Iterable&rsquo;s Next Best Action feature showing AI recommendations">
         </figure>
+
         <div class="inner-container">
           <p>
             <strong>Prescriptive AI:</strong>
@@ -81,34 +80,37 @@
           <p>
             As the primary design stakeholder, I focused on ensuring the
             experience felt clear, useful, and seamlessly integrated into a
-            marketer's workflow. I worked closely with the team to shape early
+            marketer&rsquo;s workflow. I worked closely with the team to shape early
             concepts, provide iterative feedback, and protect the bar for quality
             through launch.
           </p>
 
           <p>
             This project asked us to think differently, about what it means to
-            give marketers a sense of momentum. Done right, AI shouldn't feel
+            give marketers a sense of momentum. Done right, AI shouldn&rsquo;t feel
             like magic. It should feel like having a teammate who always knows
             the next right move.
           </p>
+
           <blockquote>
-            Iterable’s AI Suite is the cherry on top, offering Predictive Goals,
+            Iterable&rsquo;s AI Suite is the cherry on top, offering Predictive Goals,
             Next Best Action insights, and Send Time Optimization to engage the
             right users at the perfect moment. Iterable is proof that
-            personalization isn’t just a buzzword; it’s the future—and it’s
+            personalization isn&rsquo;t just a buzzword; it&rsquo;s the future—and it&rsquo;s
             already here.
           </blockquote>
           <footer>&mdash; Helena Joshi, Loyalty, Retention & CRM Coordinator, BIG4 Holiday Parks</footer>
         </div>
-        <figure class="mauve">
+
+        <figure class="coral">
           <img class="project-image" src="../images/ai/journey-assist-2x.png"
-            alt="Screenshot of Iterable's Journey Assist feature showing AI-powered journey builder">
+            alt="Screenshot of Iterable&rsquo;s Journey Assist feature showing AI-powered journey builder">
         </figure>
+
         <div class="inner-container">
           <p>
             <strong>Generative AI:</strong>
-            Journey Assist is the market's first generative AI-powered journey
+            Journey Assist is the market&rsquo;s first generative AI-powered journey
             builder. It allows marketers to describe the experience they want to
             create in plain language and generates a customizable journey map,
             ready for refinement.
@@ -148,22 +150,22 @@
         </a>
         <a href="modernization.html" class="project-nav-next">
           <span class="project-nav-label">Next</span>
-          <span class="project-nav-title">Modernizing Iterable's UX</span>
+          <span class="project-nav-title">Modernizing Iterable&rsquo;s UX</span>
         </a>
       </nav>
     </main>
   </div>
+
   <div class="modal" id="imageModal">
     <button class="modal-close" aria-label="Close modal">&times;</button>
     <img class="modal-content" id="modalImage">
   </div>
+
   <script>
-    // Get modal elements
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImage');
     const closeBtn = document.querySelector('.modal-close');
 
-    // Add click handlers to all article figures
     document.querySelectorAll('article.project figure img').forEach(img => {
       img.style.cursor = 'zoom-in';
       img.addEventListener('click', () => {
@@ -172,13 +174,11 @@
       });
     });
 
-    // Close modal when clicking close button or outside the image
     closeBtn.addEventListener('click', () => modal.style.display = 'none');
     modal.addEventListener('click', (e) => {
       if (e.target === modal) modal.style.display = 'none';
     });
 
-    // Close modal on escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') modal.style.display = 'none';
     });

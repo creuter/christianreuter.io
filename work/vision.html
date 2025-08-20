@@ -1,9 +1,9 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
-  <meta name="description" content="Christian Reuter is a product design
-                leader in Raleigh, North Carolina.">
+  <meta name="description" content="Christian Reuter is a product design leader in Raleigh, North Carolina.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#354550">
   <title>Christian Reuter</title>
@@ -13,13 +13,10 @@
 </head>
 
 <body>
-
   <div class="container">
-    <header>
+    <header class="inner-container">
       <span class="header-name">
-        <a href="../home.html">
-          Christian Reuter
-        </a>
+        <a href="../home.html">Christian Reuter</a>
       </span>
     </header>
 
@@ -27,20 +24,20 @@
       <article class="project">
         <hgroup class="inner-container project-hgroup">
           <h1 class="project-title">Shaping the Iterable Vision</h1>
-          <p class="work-subtitle">Helping align leadership, inspire the
-            company, and tell a bold story about the future of AI-powered
-            marketing.</p>
+          <p class="work-subtitle">Helping align leadership, inspire the company, and tell a bold story about the future
+            of AI-powered marketing.</p>
         </hgroup>
 
-        <figure class="sage">
+        <figure class="teal">
           <img class="project-image" src="../images/vision/home-page-2x.png"
-            alt="Screenshot of Iterable's redesigned home page interface showing modern design elements">
+            alt="Screenshot of Iterable&rsquo;s redesigned home page interface showing modern design elements">
         </figure>
+
         <div class="inner-container">
           <p>
             At a time when the industry was rapidly evolving and our teams were
             navigating ambiguity, I led a cross-functional initiative to define
-            and articulate Iterable's long-term product vision.
+            and articulate Iterable&rsquo;s long-term product vision.
           </p>
 
           <p>My goal was threefold:</p>
@@ -51,10 +48,11 @@
           </ul>
         </div>
 
-        <figure class="sage">
+        <figure class="teal">
           <img class="project-image" src="../images/vision/programs-2x.png"
-            alt="Screenshot of Iterable's Programs feature showing AI-powered campaign management">
+            alt="Screenshot of Iterable&rsquo;s Programs feature showing AI-powered campaign management">
         </figure>
+
         <div class="inner-container">
           <p>
             To do this, I assembled a working group that included our CEO,
@@ -71,7 +69,7 @@
             interactive prototype: a forward-looking concept
             experience that tied together AI, automation,
             personalization, and scale. We demoed it at our
-            company's fiscal year kickoff and later shared it
+            company&rsquo;s fiscal year kickoff and later shared it
             publicly at our customer conference with over 1,000
             attendees.
           </p>
@@ -84,15 +82,13 @@
           </p>
         </div>
 
-        <figure class="sage">
+        <figure class="teal">
           <img class="project-image" src="../images/vision/journey-2x.png"
-            alt="Screenshot of Iterable's Journeys feature showing customer journey mapping interface">
+            alt="Screenshot of Iterable&rsquo;s Journeys feature showing customer journey mapping interface">
         </figure>
 
         <div class="inner-container">
-          <p>
-            All this drove a few key outcomes:
-          </p>
+          <p>All this drove a few key outcomes:</p>
           <ul>
             <li>Influenced a reorg to dedicate R&amp;D resources toward long-term strategic work</li>
             <li>Drove alignment across product, engineering, and go-to-market teams</li>
@@ -106,7 +102,7 @@
           </ul>
 
           <p>
-            This project was a reminder of two of design's greatest superpowers,
+            This project was a reminder of two of design&rsquo;s greatest superpowers,
             helping envision possible futures, and shaping what a company
             believes.
           </p>
@@ -122,17 +118,17 @@
       </nav>
     </main>
   </div>
+
   <div class="modal" id="imageModal">
     <button class="modal-close" aria-label="Close modal">&times;</button>
     <img class="modal-content" id="modalImage">
   </div>
+
   <script>
-    // Get modal elements
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImage');
     const closeBtn = document.querySelector('.modal-close');
 
-    // Add click handlers to all article figures
     document.querySelectorAll('article.project figure img').forEach(img => {
       img.style.cursor = 'zoom-in';
       img.addEventListener('click', () => {
@@ -141,13 +137,11 @@
       });
     });
 
-    // Close modal when clicking close button or outside the image
     closeBtn.addEventListener('click', () => modal.style.display = 'none');
     modal.addEventListener('click', (e) => {
       if (e.target === modal) modal.style.display = 'none';
     });
 
-    // Close modal on escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') modal.style.display = 'none';
     });
