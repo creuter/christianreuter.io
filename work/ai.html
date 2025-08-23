@@ -18,6 +18,42 @@
       <span class="header-name">
         <a href="../home.html">Christian Reuter</a>
       </span>
+      <button class="theme-button" id="themeButton" aria-label="Open color picker">
+        <div class="color-wheel"></div>
+      </button>
+      <div class="panel color-picker-panel" id="colorPickerPanel" role="menu" aria-label="Color picker">
+        <div class="frame">
+          <div class="grid">
+            <button class="key" data-color="#5b3a3e" data-name="Cordovan" aria-label="Color: Cordovan">
+              <span class="led" style="--led:#5b3a3e"></span>
+            </button>
+            <button class="key" data-color="#5b4c3a" data-name="Cedar Ochre" aria-label="Color: Cedar Ochre">
+              <span class="led" style="--led:#5b4c3a"></span>
+            </button>
+            <button class="key" data-color="#545b3a" data-name="Field Olive" aria-label="Color: Field Olive">
+              <span class="led" style="--led:#545b3a"></span>
+            </button>
+            <button class="key" data-color="#3e5b3a" data-name="Forest Fir" aria-label="Color: Forest Fir">
+              <span class="led" style="--led:#3e5b3a"></span>
+            </button>
+            <button class="key" data-color="#3a5b4c" data-name="Sea Pine" aria-label="Color: Sea Pine">
+              <span class="led" style="--led:#3a5b4c"></span>
+            </button>
+            <button class="key" data-color="#3a545b" data-name="Steel Teal" aria-label="Color: Steel Teal">
+              <span class="led" style="--led:#3a545b"></span>
+            </button>
+            <button class="key" data-color="#3a3e5b" data-name="Night Indigo" aria-label="Color: Night Indigo">
+              <span class="led" style="--led:#3a3e5b"></span>
+            </button>
+            <button class="key" data-color="#4c3a5b" data-name="Eggplant" aria-label="Color: Eggplant">
+              <span class="led" style="--led:#4c3a5b"></span>
+            </button>
+            <button class="key" data-color="#5b3a54" data-name="Mulberry Ash" aria-label="Color: Mulberry Ash">
+              <span class="led" style="--led:#5b3a54"></span>
+            </button>
+          </div>
+        </div>
+      </div>
     </header>
 
     <main id="main-content">
@@ -183,6 +219,9 @@
       if (e.key === 'Escape') modal.style.display = 'none';
     });
   </script>
+
+  <!-- Color Picker Widget JavaScript -->
+  <script src="../app.js"></script>
 </body>
 
 </html>

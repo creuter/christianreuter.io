@@ -18,29 +18,50 @@
 </head>
 
 <body>
+
   <div class="container">
     <header>
       <span class="header-name">Christian Reuter</span>
-    </header>
+      <button class="theme-button" id="themeButton" aria-label="Open color picker">
+        <div class="color-wheel"></div>
+      </button>
 
-    <!-- Color Dial (Commented out for future use)
-    <div class="color-dial-container">
-      <div class="color-dial" id="colorDial">
-        <div class="dial-center"></div>
-        <div class="dial-handle" id="dialHandle"></div>
-        <div class="color-markers">
-          <div class="color-marker" data-color="bg-deep-merlot" style="--marker-color: #5B3A3E;"></div>
-          <div class="color-marker" data-color="bg-dusty-mulberry" style="--marker-color: #5B4F3A;"></div>
-          <div class="color-marker" data-color="bg-plum-brown" style="--marker-color: #4F5B3A;"></div>
-          <div class="color-marker" data-color="bg-burnt-umber" style="--marker-color: #3A5B3E;"></div>
-          <div class="color-marker" data-color="bg-clay-brown" style="--marker-color: #3A5B57;"></div>
-          <div class="color-marker" data-color="bg-cocoa-dust" style="--marker-color: #3A465B;"></div>
-          <div class="color-marker" data-color="bg-moss-green" style="--marker-color: #463A5B;"></div>
-          <div class="color-marker" data-color="bg-olive-drab" style="--marker-color: #5B3A57;"></div>
+      <div class="panel color-picker-panel" id="colorPickerPanel" role="menu" aria-label="Color picker">
+        <div class="frame">
+          <div class="grid">
+            <button class="key" data-color="#5b3a3e" data-name="Cordovan" aria-label="Color: Cordovan">
+              <span class="led" style="--led:#5b3a3e"></span>
+            </button>
+            <button class="key" data-color="#5b4c3a" data-name="Cedar Ochre" aria-label="Color: Cedar Ochre">
+              <span class="led" style="--led:#5b4c3a"></span>
+            </button>
+            <button class="key" data-color="#545b3a" data-name="Field Olive" aria-label="Color: Field Olive">
+              <span class="led" style="--led:#545b3a"></span>
+            </button>
+            <button class="key" data-color="#3e5b3a" data-name="Forest Fir" aria-label="Color: Forest Fir">
+              <span class="led" style="--led:#3e5b3a"></span>
+            </button>
+            <button class="key" data-color="#3a5b4c" data-name="Sea Pine" aria-label="Color: Sea Pine">
+              <span class="led" style="--led:#3a5b4c"></span>
+            </button>
+            <button class="key" data-color="#3a545b" data-name="Steel Teal" aria-label="Color: Steel Teal">
+              <span class="led" style="--led:#3a545b"></span>
+            </button>
+            <button class="key" data-color="#3a3e5b" data-name="Night Indigo" aria-label="Color: Night Indigo">
+              <span class="led" style="--led:#3a3e5b"></span>
+            </button>
+            <button class="key" data-color="#4c3a5b" data-name="Eggplant" aria-label="Color: Eggplant">
+              <span class="led" style="--led:#4c3a5b"></span>
+            </button>
+            <button class="key" data-color="#5b3a54" data-name="Mulberry Ash" aria-label="Color: Mulberry Ash">
+              <span class="led" style="--led:#5b3a54"></span>
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-    -->
+    </header>
+
+
 
     <main>
       <img src="images/christian-reuter.jpg" alt="Christian Reuter&rsquo;s professional headshot"
@@ -216,198 +237,8 @@
     </main>
   </div>
 
-  <!-- Color Dial JavaScript (Commented out for future use)
-  <script>
-    // Color Dial Functionality
-    class ColorDial {
-      constructor() {
-        this.dial = document.getElementById('colorDial');
-        this.handle = document.getElementById('dialHandle');
-        this.markers = document.querySelectorAll('.color-marker');
-        this.body = document.body;
-        this.isDragging = false;
-        this.currentAngle = 0;
-        this.currentColorClass = 'bg-dusty-mulberry';
-        this.lastColorClass = 'bg-dusty-mulberry';
-        this.audioContext = null;
-        this.totalRotation = 0;
-        this.lastAngle = 0;
-
-        this.init();
-      }
-
-      init() {
-        this.setupEventListeners();
-        this.updateHandlePosition();
-        this.setActiveMarker();
-        this.initAudio();
-      }
-
-      initAudio() {
-        try {
-          this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        } catch (e) {
-          console.log('Audio not supported');
-        }
-      }
-
-      playColorChangeSound() {
-        if (!this.audioContext) return;
-
-        const oscillator = this.audioContext.createOscillator();
-        const gainNode = this.audioContext.createGain();
-
-        oscillator.connect(gainNode);
-        gainNode.connect(this.audioContext.destination);
-
-        oscillator.type = 'sine';
-        oscillator.frequency.setValueAtTime(220, this.audioContext.currentTime);
-        oscillator.frequency.exponentialRampToValueAtTime(330, this.audioContext.currentTime + 0.1);
-
-        gainNode.gain.setValueAtTime(0.1, this.audioContext.currentTime);
-        gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.3);
-
-        oscillator.start(this.audioContext.currentTime);
-        oscillator.stop(this.audioContext.currentTime + 0.3);
-      }
-
-      setupEventListeners() {
-        this.handle.addEventListener('mousedown', this.startDrag.bind(this));
-        document.addEventListener('mousemove', this.drag.bind(this));
-        document.addEventListener('mouseup', this.stopDrag.bind(this));
-
-        this.handle.addEventListener('touchstart', this.startDrag.bind(this));
-        document.addEventListener('touchmove', this.drag.bind(this));
-        document.addEventListener('touchend', this.stopDrag.bind(this));
-
-        this.markers.forEach(marker => {
-          marker.addEventListener('click', () => {
-            this.selectColor(marker.dataset.color);
-          });
-        });
-      }
-
-      startDrag(e) {
-        e.preventDefault();
-        this.isDragging = true;
-        this.handle.style.cursor = 'grabbing';
-      }
-
-      drag(e) {
-        if (!this.isDragging) return;
-
-        e.preventDefault();
-
-        const rect = this.dial.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-
-        let clientX, clientY;
-        if (e.type === 'mousemove') {
-          clientX = e.clientX;
-          clientY = e.clientY;
-        } else if (e.type === 'touchmove') {
-          clientX = e.touches[0].clientX;
-          clientY = e.touches[0].clientY;
-        }
-
-        const deltaX = clientX - centerX;
-        const deltaY = clientY - centerY;
-
-        let angle = Math.atan2(deltaY, deltaX) * 180 / Math.PI;
-        angle = (angle + 90 + 360) % 360;
-
-        this.currentAngle = angle;
-        this.updateHandlePosition();
-        this.selectColorByAngle(angle);
-      }
-
-      stopDrag() {
-        if (this.isDragging) {
-          this.snapToNearestMarker();
-        }
-        this.isDragging = false;
-        this.handle.style.cursor = 'grab';
-      }
-
-      snapToNearestMarker() {
-        const markerAngles = [0, 45, 90, 135, 180, 225, 270, 315];
-        let nearestAngle = markerAngles[0];
-        let minDistance = 360;
-
-        markerAngles.forEach(angle => {
-          let distance = Math.abs(this.currentAngle - angle);
-          if (distance > 180) distance = 360 - distance;
-
-          if (distance < minDistance) {
-            minDistance = distance;
-            nearestAngle = angle;
-          }
-        });
-
-        this.currentAngle = nearestAngle;
-        this.updateHandlePosition();
-        this.selectColorByAngle(nearestAngle);
-      }
-
-      updateHandlePosition() {
-        const radius = 36;
-        const angleRad = (this.currentAngle - 90) * Math.PI / 180;
-        const x = Math.cos(angleRad) * radius;
-        const y = Math.sin(angleRad) * radius;
-
-        let deltaAngle = this.currentAngle - this.lastAngle;
-
-        if (deltaAngle > 180) deltaAngle -= 360;
-        if (deltaAngle < -180) deltaAngle += 360;
-
-        this.totalRotation += deltaAngle;
-        this.lastAngle = this.currentAngle;
-
-        const handleRotation = this.totalRotation + 90;
-
-        this.handle.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) rotate(${handleRotation}deg)`;
-      }
-
-      selectColorByAngle(angle) {
-        const markerIndex = Math.round(angle / 45) % 8;
-        const marker = this.markers[markerIndex];
-        if (marker) {
-          this.selectColor(marker.dataset.color);
-        }
-      }
-
-      selectColor(colorClass) {
-        if (this.lastColorClass !== colorClass) {
-          this.playColorChangeSound();
-          this.lastColorClass = colorClass;
-        }
-
-        const marker = Array.from(this.markers).find(m => m.dataset.color === colorClass);
-        if (marker) {
-          const colorValue = getComputedStyle(marker).getPropertyValue('--marker-color');
-
-          this.body.style.backgroundColor = colorValue;
-          this.currentColorClass = colorClass;
-          this.setActiveMarker();
-        }
-      }
-
-      setActiveMarker() {
-        this.markers.forEach(marker => {
-          marker.classList.remove('active');
-          if (marker.dataset.color === this.currentColorClass) {
-            marker.classList.add('active');
-          }
-        });
-      }
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      new ColorDial();
-    });
-  </script>
-  -->
+  <!-- Color Picker Widget JavaScript -->
+  <script src="app.js"></script>
 </body>
 
 </html>

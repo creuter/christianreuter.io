@@ -106,6 +106,9 @@ video {
   --color-lavender: #A8A0B8;
   --color-gold: #B8A67A;
   --color-slate: #8A9AAB;
+  --color-cream: #E8E4DB;
+  --color-warm-cream: #E0DCD3;
+  --color-light-cream: #E6E2D9;
 }
 
 /* ==========================================================================
@@ -129,6 +132,7 @@ video {
   src: url('fonts/ringside/RingsideRegularBook_normal_normal.ttf') format('truetype');
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
 }
 
 @font-face {
@@ -136,6 +140,7 @@ video {
   src: url('fonts/ringside/RingsideRegularBookItalic_italic_normal.ttf') format('truetype');
   font-style: italic;
   font-weight: 400;
+  font-display: swap;
 }
 
 @font-face {
@@ -143,6 +148,7 @@ video {
   src: url('fonts/ringside/RingsideExtraWide-Book_Web.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -150,6 +156,7 @@ video {
   src: url('fonts/ringside/RingsideExtraWide-Bold_Web.woff2') format('woff2');
   font-weight: bold;
   font-style: normal;
+  font-display: swap;
 }
 
 /* ==========================================================================
@@ -166,6 +173,7 @@ body {
   font-smoothing: antialiased;
   padding: 1.5em 1em;
   position: relative;
+  transition: background-color 0.3s ease;
 }
 
 @media (min-width: 36em) {
@@ -200,19 +208,26 @@ h2,
 .header-name {
   color: white;
   font-weight: 500;
-  margin-bottom: 1em;
-  font-family: var(--font-family-heading);
+  font-family: var(--font-family-heading), "Ringside ExtraWide", "Arial Black", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 h2 {
   margin-top: 4em;
+  margin-bottom: 1em;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 @media (min-width: 62em) {
-  .header-name {
+  header {
     position: fixed;
     top: 1.5em;
     left: 1.5em;
+    right: 1.5em;
     z-index: 1;
   }
 }
@@ -329,7 +344,7 @@ footer {
 .work-title {
   font-size: 0.875em;
   margin-bottom: 1em;
-  color: black;
+  color: var(--color-background);
 }
 
 @media (max-width: 48em) {
@@ -393,13 +408,6 @@ footer {
 }
 
 /* Article project styles */
-
-.inner-container {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 30em;
-}
-
 article h2:first-of-type {
   margin-top: 3em;
 }
@@ -418,13 +426,8 @@ article.project figure {
 @media (min-width: 62em) {
   article.project figure {
     padding: 2em;
-  }
-
-  article.project {
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40em;
+    margin-left: -4em;
+    margin-right: -4em;
   }
 }
 
@@ -531,23 +534,23 @@ article.project.slate .project-title {
 
 /* Subtle background accents for project pages */
 article.project.teal {
-  background: linear-gradient(135deg, rgba(90, 122, 122, 0.05) 0%, transparent 100%);
+  background: linear-gradient(135deg, rgba(90, 122, 122, 0.05) 0%, rgba(245, 241, 232, 0.02) 100%);
 }
 
 article.project.coral {
-  background: linear-gradient(135deg, rgba(196, 154, 138, 0.05) 0%, transparent 100%);
+  background: linear-gradient(135deg, rgba(196, 154, 138, 0.05) 0%, rgba(245, 241, 232, 0.02) 100%);
 }
 
 article.project.lavender {
-  background: linear-gradient(135deg, rgba(168, 160, 184, 0.05) 0%, transparent 100%);
+  background: linear-gradient(135deg, rgba(168, 160, 184, 0.05) 0%, rgba(245, 241, 232, 0.02) 100%);
 }
 
 article.project.gold {
-  background: linear-gradient(135deg, rgba(184, 166, 122, 0.05) 0%, transparent 100%);
+  background: linear-gradient(135deg, rgba(184, 166, 122, 0.05) 0%, rgba(245, 241, 232, 0.02) 100%);
 }
 
 article.project.slate {
-  background: linear-gradient(135deg, rgba(138, 154, 171, 0.05) 0%, transparent 100%);
+  background: linear-gradient(135deg, rgba(138, 154, 171, 0.05) 0%, rgba(245, 241, 232, 0.02) 100%);
 }
 
 /* ==========================================================================
@@ -911,12 +914,6 @@ article.project.slate {
    Utility Classes
    ========================================================================== */
 
-.logomark {
-  height: 2em;
-  fill: inherit;
-  filter: drop-shadow(0px 1px rgb(255 255 255 / 0.1));
-}
-
 dl {
   display: grid;
   gap: 1em 2em;
@@ -928,113 +925,143 @@ dt {
 }
 
 /* ==========================================================================
-   Color Dial (Reserved for Future Use)
+   Color Picker Widget
    ========================================================================== */
 
-.color-dial-container {
-  position: fixed;
-  top: 20px;
-  right: 20px;
+.panel {
+  background: var(--color-warm-cream);
+  border-radius: 1em;
+  box-shadow: inset 2px 2px 3px #ffffffb3, inset -2px -2px 3px #0000004d, .666876px .666876px .943106px -.75px #00000052, 1.81608px 1.81608px 2.56833px -1.5px #0000004f, 3.98745px 3.98745px 5.63912px -2.25px #0000004b, 8.85125px 8.85125px 12.5175px -3px #00000041, 21px 21px 31.8198px -3.75px #00000043, -1px -1px #000000af;
+  display: flex;
+  height: 240px;
+  padding: 16px;
+  width: 240px;
+}
+
+
+.frame {
+  flex: 1;
+  display: flex;
+  padding: 8px;
+  background-color: var(--color-light-cream);
+  border-radius: 11px;
+  box-shadow: inset 0 2px 8px 6px #00000033;
+}
+
+.grid {
+  flex: 1;
+  display: grid;
+  grid-gap: 4px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+/* ==========================================================================
+   Color wheel
+   ========================================================================== */
+.theme-button {
+  box-shadow: inset 2px 2px 2px 0 rgb(255, 255, 255), inset -2px -2px 2px 0 rgba(0, 0, 0, .2), .666876px .666876px .943106px -1px rgba(0, 0, 0, .3), 1.81608px 1.81608px 2.56833px -1.5px rgba(0, 0, 0, .28), 3.98745px 3.98745px 5.63912px -2.25px rgba(0, 0, 0, .25), 8.85125px 8.85125px 12.5175px -3px rgba(0, 0, 0, .22), 15px 15px 31.8198px -3.75px rgba(0, 0, 0, .1), -1px -1px 0 0 rgb(0 0 0/8%);
   z-index: 1000;
-  pointer-events: none;
-}
-
-.color-dial {
-  position: relative;
-  width: 72px;
-  height: 72px;
-  pointer-events: auto;
-}
-
-.dial-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 36px;
-  height: 36px;
-  background: white;
+  background: transparent;
+  border: none;
   border-radius: 50%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  z-index: 3;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  padding: 0;
+  overflow: hidden;
+  border: 2px solid var(--color-warm-cream);
 }
 
-.dial-handle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 10px;
-  width: 18px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  z-index: 4;
-  cursor: grab;
-  transition: transform 0.1s ease;
+.theme-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 
-.dial-handle:active {
-  cursor: grabbing;
-  transform: translate(-50%, -50%) scale(0.95);
+.theme-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.color-markers {
-  position: absolute;
-  top: 0;
-  left: 0;
+.color-wheel {
   width: 100%;
   height: 100%;
-}
-
-.color-marker {
-  background: var(--marker-color);
   border-radius: 50%;
-  box-shadow: inset 0 1px #000000aa, 0px 1px #ffffff44;
-  height: 10px;
+  background: conic-gradient(from 0deg,
+      #5b3a3e 0deg,
+      #5b4c3a 40deg,
+      #545b3a 80deg,
+      #3e5b3a 120deg,
+      #3a5b4c 160deg,
+      #3a545b 200deg,
+      #3a3e5b 240deg,
+      #4c3a5b 280deg,
+      #5b3a54 320deg,
+      #5b3a3e 360deg);
+  transition: transform 0.3s ease;
+}
+
+.theme-button:hover .color-wheel {
+  transform: rotate(45deg) scale(1.1);
+}
+
+.theme-button:active .color-wheel {
+  transform: rotate(45deg) scale(0.95);
+}
+
+/* Color Picker Panel Positioning */
+.color-picker-panel {
   position: absolute;
-  transform: translate(-50%, -50%);
-  transition: all 0.2s ease;
-  width: 10px;
+  top: 54px;
+  right: 20px;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  display: none;
+  transform: translateY(-10px) scale(0.95);
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Position the 8 color markers in a circle */
-.color-marker:nth-child(1) {
-  top: 0%;
-  left: 50%;
+.color-picker-panel.show {
+  opacity: 1;
+  visibility: visible;
+  display: flex;
+  transform: translateY(0) scale(1);
 }
 
-.color-marker:nth-child(2) {
-  top: 15%;
-  left: 85%;
+/* Enhanced key button interactions */
+.key {
+  transition: all 0.15s ease-in;
+  position: relative;
+  border: none;
+  background-color: var(--color-cream);
+  border-radius: 8px;
+  box-shadow: inset 2px 2px 2px 0 rgb(255, 255, 255), inset -2px -2px 2px 0 rgba(0, 0, 0, .2), .666876px .666876px .943106px -1px rgba(0, 0, 0, .3), 1.81608px 1.81608px 2.56833px -1.5px rgba(0, 0, 0, .28), 3.98745px 3.98745px 5.63912px -2.25px rgba(0, 0, 0, .25), 8.85125px 8.85125px 12.5175px -3px rgba(0, 0, 0, .22), 15px 15px 31.8198px -3.75px rgba(0, 0, 0, .1), -1px -1px 0 0 rgb(0 0 0/8%);
+  cursor: pointer;
 }
 
-.color-marker:nth-child(3) {
-  top: 50%;
-  left: 100%;
+.key:hover {
+  transform: translateY(-2px);
+  box-shadow: inset 2px 2px 2px 0 rgb(255, 255, 255), inset -2px -2px 2px 0 rgba(0, 0, 0, .2), .666876px .666876px .943106px -1px rgba(0, 0, 0, .3), 1.81608px 1.81608px 2.56833px -1.5px rgba(0, 0, 0, .28), 3.98745px 3.98745px 5.63912px -2.25px rgba(0, 0, 0, .25), 8.85125px 8.85125px 12.5175px -3px rgba(0, 0, 0, .22), 15px 15px 31.8198px -3.75px rgba(0, 0, 0, .1), -1px -1px 0 0 rgb(0 0 0/8%), 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-.color-marker:nth-child(4) {
-  top: 85%;
-  left: 85%;
+.key:active {
+  box-shadow: inset .5px .5px 1px #fff, inset -.5px -.5px 1px #00000026, .222px .222px .314px -.5px #0003, .605px .605px .856px -1px #0000002e, 1.329px 1.329px 1.88px -1.5px #00000040, 2.95px 2.95px 4.172px -2px #0000001a, 2.5px 2.5px 3px -2.5px #00000026, -.5px -.5px 0 0 rgb(0 0 0/10%);
+  transform: translateY(0);
 }
 
-.color-marker:nth-child(5) {
-  top: 100%;
-  left: 50%;
-}
-
-.color-marker:nth-child(6) {
-  top: 85%;
-  left: 15%;
-}
-
-.color-marker:nth-child(7) {
-  top: 50%;
-  left: 0%;
-}
-
-.color-marker:nth-child(8) {
-  top: 15%;
-  left: 15%;
+.led {
+  background-color: var(--led);
+  border-radius: 100%;
+  box-shadow: inset 0 1px 2px #00000099;
+  display: inline-block;
+  height: 12px;
+  position: absolute;
+  right: 1em;
+  top: 1em;
+  width: 12px;
 }
