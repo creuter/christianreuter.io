@@ -3,10 +3,21 @@
 class ColorPickerWidget {
   constructor() {
     this.themeButton = document.getElementById('themeButton');
-    this.colorPanel = document.getElementById('colorPickerPanel');
-    this.colorButtons = document.querySelectorAll('.color-picker-panel .key');
     this.audioContext = null;
-    this.isOpen = false;
+
+    // Color cycling configuration
+    this.colors = [
+      { hex: '#5b3a3e', name: 'Cordovan' },
+      { hex: '#5b4c3a', name: 'Cedar Ochre' },
+      { hex: '#545b3a', name: 'Field Olive' },
+      { hex: '#3e5b3a', name: 'Forest Fir' },
+      { hex: '#3a5b4c', name: 'Sea Pine' },
+      { hex: '#3a545b', name: 'Steel Teal' },
+      { hex: '#3a3e5b', name: 'Night Indigo' },
+      { hex: '#4c3a5b', name: 'Eggplant' },
+      { hex: '#5b3a54', name: 'Mulberry Ash' }
+    ];
+    this.currentColorIndex = 0;
 
     // Color generation configuration - tweak these values!
     this.colorConfig = {
@@ -43,34 +54,20 @@ class ColorPickerWidget {
     // Initialize audio context
     this.initAudio();
 
-    // Event listeners
+    // Event listeners - now cycles colors instead of opening panel
     this.themeButton.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
-      this.togglePanel();
+      this.cycleToNextColor();
     });
 
-    // Color button listeners
-    this.colorButtons.forEach(button => {
-      button.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        this.handleColorSelection(e);
-      });
+    // Add hover rotation for color wheel
+    this.themeButton.addEventListener('mouseenter', () => {
+      this.applyHoverRotation(true);
     });
 
-    // Close panel when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!this.colorPanel.contains(e.target) && !this.themeButton.contains(e.target)) {
-        this.closePanel();
-      }
-    });
-
-    // Keyboard event listener for ESC key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && this.isOpen) {
-        this.closePanel();
-      }
+    this.themeButton.addEventListener('mouseleave', () => {
+      this.applyHoverRotation(false);
     });
   }
 
@@ -80,74 +77,6 @@ class ColorPickerWidget {
     } catch (e) {
       console.log('Audio not supported');
     }
-  }
-
-  togglePanel() {
-    if (this.isOpen) {
-      this.closePanel();
-    } else {
-      this.openPanel();
-    }
-  }
-
-  openPanel() {
-    if (this.isOpen) return;
-
-    this.isOpen = true;
-
-    // First make it visible and positioned
-    this.colorPanel.style.display = 'flex';
-
-    // Force a reflow to ensure display: block is applied
-    this.colorPanel.offsetHeight;
-
-    // Then add the show class for animations
-    this.colorPanel.classList.add('show');
-
-    // Focus management for accessibility
-    setTimeout(() => {
-      this.colorButtons[0].focus();
-    }, 300);
-  }
-
-  closePanel() {
-    if (!this.isOpen) return;
-
-    this.isOpen = false;
-
-    // Remove show class to trigger animation
-    this.colorPanel.classList.remove('show');
-
-    // After animation completes, hide it completely
-    setTimeout(() => {
-      this.colorPanel.style.display = 'none';
-    }, 300);
-
-    // Return focus to theme button
-    this.themeButton.focus();
-  }
-
-  handleColorSelection(event) {
-    const button = event.currentTarget;
-    const color = button.getAttribute('data-color');
-    const colorName = button.getAttribute('data-name');
-
-    // Add visual feedback for button press
-    this.animateButtonPress(button);
-
-    // Play satisfying mechanical click sound
-    this.playClackSound();
-
-    // Apply color to body
-    document.body.style.backgroundColor = color;
-
-    // Generate and apply accent colors for work projects
-    this.generateAccentColors(color);
-
-    // Store the selected color in localStorage for persistence
-    localStorage.setItem('selectedThemeColor', color);
-
-    // Don't close the panel after selection - let user keep it open
   }
 
   // Generate 4 pleasing accent colors from a base color
@@ -557,15 +486,99 @@ class ColorPickerWidget {
     this.updateColorConfig(config);
     console.log(`Brightness adjusted by ${multiplier}x`);
   }
+
+  // New method to cycle through colors
+  cycleToNextColor() {
+    // Move to next color
+    this.currentColorIndex = (this.currentColorIndex + 1) % this.colors.length;
+
+    // Get the new color
+    const newColor = this.colors[this.currentColorIndex];
+
+    // Add visual feedback for button press
+    this.animateButtonPress(this.themeButton);
+
+    // Play satisfying mechanical click sound
+    this.playClackSound();
+
+    // Apply color to body
+    document.body.style.backgroundColor = newColor.hex;
+
+    // Generate and apply accent colors for work projects
+    this.generateAccentColors(newColor.hex);
+
+    // Store the selected color in localStorage for persistence
+    localStorage.setItem('selectedThemeColor', newColor.hex);
+
+    // Update the color wheel rotation for visual feedback
+    this.updateColorWheelRotation();
+
+    console.log(`Color changed to: ${newColor.name} (${newColor.hex})`);
+  }
+
+  // New method to update color wheel rotation for visual feedback
+  updateColorWheelRotation() {
+    const colorWheel = this.themeButton.querySelector('.color-wheel');
+    const spinnerTriangle = this.themeButton.querySelector('.spinner-triangle');
+
+    if (colorWheel) {
+      // Calculate rotation so the current body background color is at the top
+      // Since CSS gradient goes clockwise from 0deg, we need to rotate counterclockwise
+      // to bring the current color to the top position
+      const rotation = (360 - (this.currentColorIndex * 40)) % 360;
+      colorWheel.style.setProperty('transform', `rotate(${rotation}deg)`, 'important');
+    }
+
+    if (spinnerTriangle) {
+      // Keep the spinner triangle pointing upward (no rotation)
+      // CSS already handles the centering with transform: translateX(-50%)
+      console.log(`Spinner triangle positioned for color index ${this.currentColorIndex}`);
+    } else {
+      console.warn('Spinner triangle not found');
+    }
+  }
+
+  // Method to apply hover rotation to color wheel
+  applyHoverRotation(isHovering) {
+    const colorWheel = this.themeButton.querySelector('.color-wheel');
+    if (colorWheel) {
+      const baseRotation = (360 - (this.currentColorIndex * 40)) % 360;
+      const hoverRotation = isHovering ? 20 : 0;
+      const totalRotation = baseRotation + hoverRotation;
+      colorWheel.style.setProperty('transform', `rotate(${totalRotation}deg)`, 'important');
+    }
+  }
+
+  // Restore previously selected color
+  restoreColor() {
+    const savedColor = localStorage.getItem('selectedThemeColor');
+    if (savedColor) {
+      // Find the index of the saved color
+      const colorIndex = this.colors.findIndex(color => color.hex === savedColor);
+      if (colorIndex !== -1) {
+        this.currentColorIndex = colorIndex;
+        // Apply the color
+        document.body.style.backgroundColor = savedColor;
+        // Update the rotation
+        this.updateColorWheelRotation();
+        console.log(`Restored color: ${this.colors[colorIndex].name} (${savedColor})`);
+      }
+    } else {
+      // Set default color if none was saved
+      document.body.style.backgroundColor = this.colors[0].hex;
+      this.currentColorIndex = 0;
+      this.updateColorWheelRotation();
+      console.log(`Set default color: ${this.colors[0].name} (${this.colors[0].hex})`);
+    }
+  }
 }
 
 // Initialize the color picker when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   // Verify elements exist
   const themeButton = document.getElementById('themeButton');
-  const colorPanel = document.getElementById('colorPickerPanel');
 
-  if (!themeButton || !colorPanel) {
+  if (!themeButton) {
     console.error('Missing required elements for color picker widget');
     return;
   }
