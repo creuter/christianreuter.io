@@ -1,0 +1,27 @@
+{
+  "name": "christianreuter.io",
+  "version": "1.0.0",
+  "description": "Christian Reuter's personal website - Product Design & UX Research Executive",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "serve": "node server.js"
+  },
+  "keywords": [
+    "portfolio",
+    "design",
+    "ux",
+    "product-design",
+    "leadership"
+  ],
+  "author": "Christian Reuter",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/creuter/christianreuter.io.git"
+  }
+}
