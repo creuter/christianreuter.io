@@ -202,16 +202,18 @@ body {
    Typography Elements
    ========================================================================== */
 
-h1 {
-  margin-bottom: 0.5em;
-}
-
+h1,
 h2,
 .header-name {
   color: white;
   font-weight: 500;
   font-family: var(--font-family-heading), "Ringside ExtraWide", "Arial Black", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
+h1 {
+  margin-bottom: 0.5em;
+}
+
 
 h2 {
   margin-top: 4em;
@@ -238,11 +240,6 @@ header {
   text-decoration: none;
 }
 
-h1+p {
-  margin-bottom: 4em;
-  color: var(--color-subdued-text);
-}
-
 p {
   line-height: 1.5;
   margin-bottom: 1em;
@@ -255,7 +252,7 @@ a {
 }
 
 a:hover {
-  color: var(--color-subdued-text);
+  color: white;
 }
 
 blockquote {
@@ -281,6 +278,21 @@ footer {
   margin-bottom: 2em;
   margin-top: 6em;
   width: 8em;
+}
+
+.social-links {
+  list-style: none;
+  display: flex;
+}
+
+.social-link {
+  color: var(--color-subdued-text);
+  display: inline-flex;
+  margin-right: 1em;
+}
+
+.social-link a:hover {
+  color: white;
 }
 
 .quote {
