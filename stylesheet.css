@@ -98,7 +98,7 @@ video {
 :root {
   --font-family: "Ringside", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-family-heading: "Ringside ExtraWide", "Arial Black", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --color-background: var(#5B3A3E);
+  --color-background: #5B3A3E;
   --color-text: #ffffffcc;
   --color-subdued-text: #ffffff88;
   --color-warm-cream: #E0DCD3;
@@ -1009,23 +1009,6 @@ dt {
 .page-content.fade-in {
   opacity: 1;
 }
-
-/* Navigation link states */
-/* [data-route] { */
-/*   cursor: pointer; */
-/*   transition: all 0.2s ease; */
-/* } */
-
-/* [data-route]:hover { */
-/*   transform: translateY(-2px); */
-/* } */
-
-/* Active navigation state */
-/* [data-route].active { */
-/*   text-decoration-thickness: 2px; */
-/*   text-decoration: underline; */
-/*   text-underline-offset: 4px; */
-/* } */
 
 /* Loading state for page transitions */
 .page-loading {
